@@ -171,7 +171,7 @@ public class schitaka {
         double res= Math.abs(t1-t0);
         double res2 = Math.abs(t3-t1);
         boolean a;
-        a = !(res < h0) && (res2 < h0);
+        a = (res > h0) && (res2 > h0);
         return a; //+ postiyno
     }
 
