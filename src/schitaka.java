@@ -147,8 +147,8 @@ public class schitaka {
     }
 
     static double calculating_h0(double t0){
-        double ho = (t0 / 100) * 10;
-        return ho;
+        double h0 = (t0 / 100) * 10;
+        return h0;
     }
 
     static boolean firstStep(double t0, double t1, double t3, double h0){
@@ -171,7 +171,7 @@ public class schitaka {
         double res= Math.abs(t1-t0);
         double res2 = Math.abs(t3-t1);
         boolean a;
-        a = (res > h0) && (res2 > h0);
+        a = (res < h0) && (res2 < h0);
         return a; //+ postiyno
     }
 
@@ -210,22 +210,22 @@ public class schitaka {
         }
         else{
             if (secondStepNo(t0,t1,t3,h0)){
-                return 3;//postiyna
+                return 5;//postiyna
             }
             else{
                 if (thirdStep(t0,t1,t3,h0)){
-                    return 4;//zrostanya
+                    return 3;//zrostanya
                 }
                 else{
                     if (fourthStep(t0,t1,t3,h0)){
-                        return 5;//spadaniya
+                        return 4;//spadaniya
                     }
                     else{
                         if(fifthStep(t0,t1,t3,h0)){
-                            return 4;//zrostanya
+                            return 3;//zrostanya
                         }
                         else{
-                            return 5;//spadaniya
+                            return 4;//spadaniya
                         }
                     }
                 }
