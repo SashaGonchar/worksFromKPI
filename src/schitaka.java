@@ -76,7 +76,7 @@ public class schitaka {
                 double t0 = assigmentOft0(arr, index1);//сюда передаем значения поочередно для каждого параметра с файла
                 double t1 = assigmentOft1(arr, index2);
                 double t3 = assigmentOft3(arr, index3);
-                double h0 = calculating_h0(t1);//посчитали h0
+                double h0 = calculating_h0(t0);//посчитали h0
 
                 index1 += 3;
                 index2 += 3;
@@ -112,7 +112,7 @@ public class schitaka {
         double t0 = assigmentOft0(arr, index1);//сюда передаем значения поочередно для каждого параметра с файла
         double t1 = assigmentOft1(arr, index2);
         double t3 = assigmentOft3(arr, index3);
-        double h0 = calculating_h0(t1);
+        double h0 = calculating_h0(t0);
 
         return (typeDefenition(t0, t1, t3, h0));
     }
@@ -133,7 +133,7 @@ public class schitaka {
     }
 
     public static double[] loadFromFile(File file) {
-        new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         double [] arr= new double[384];
         try (Scanner sc = new Scanner(file)) {
             for (int index=0; sc.hasNextLine();index++) {
@@ -146,8 +146,8 @@ public class schitaka {
         return arr;
     }
 
-    static double calculating_h0(double t1){
-        double ho = (t1 / 100) * 10;
+    static double calculating_h0(double t0){
+        double ho = (t0 / 100) * 10;
         return ho;
     }
 
@@ -163,7 +163,7 @@ public class schitaka {
         double res= t1-t0;
         double res2 = t1-t3;
         boolean a;
-        a = (res > h0) && (res2 > h0);
+        a = (res > 0) && (res2 > 0);
         return a;//+ maks -min
     }
 
@@ -179,7 +179,7 @@ public class schitaka {
         double res= t1-t0;
         double res2 = t3-t1;
         boolean a;
-        a = (res > h0) && (res2 > h0);
+        a = (res > 0) && (res2 > 0);
         return a; //+zrostanya
     }
 
@@ -187,7 +187,7 @@ public class schitaka {
         double res= t1-t0;
         double res2 = t3-t1;
         boolean a;
-        a = (res < h0) && (res2 < h0);
+        a = (res < 0) && (res2 < 0);
         return a;//+ spadanya
     }
 
