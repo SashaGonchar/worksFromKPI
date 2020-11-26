@@ -17,31 +17,88 @@ public class schitaka {
 
         printingOfGroupOfDifferentTypes(arr1, arr2, arr3, arr4);
         printingOfGroupOfDifferentTypes(arr5, arr6, arr7, arr8);
-
+        int okHealth=0;
+        int normHealth=0;
+        int notOkHealth=0;
         for (int bigArrIndex=0,index1=0,index2=1,index3=2;bigArrIndex<128;bigArrIndex++){
+
             for (int index = 0; index < 8; index++,index1+=3,index2+=3,index3+=3) {
 
                 int[] arrOfEachPersonTypes = new int[8];
+                int healthPoint=0;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr1, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==1){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr2, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==1){
+                    healthPoint++;
+                }
+
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr3, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==1){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr4, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==1){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr5, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==2){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr6, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==2){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr7, index1, index2, index3);
+                if (arrOfEachPersonTypes[index]==2){
+                    healthPoint++;
+                }
                 index++;
                 arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr8, index1, index2, index3);
-                System.out.println(Arrays.toString(arrOfEachPersonTypes));
+                if (arrOfEachPersonTypes[index]==5){
+                    healthPoint++;
+                }
+                int [] sumArr=arrOFHealthCondition(arrOfEachPersonTypes,healthPoint,okHealth,
+                        normHealth,notOkHealth);
 
+                okHealth=+sumArr[0];
+                normHealth=+(sumArr[1]);
+                notOkHealth=+(sumArr[2]);
+
+                }
+
+                if(bigArrIndex==127){
+                    System.out.println("{ Процент людей с удовлетворительным состоянием здоровья:"+persentOfTotal(okHealth)+" ");
+                    System.out.println("  Процент людей с условно удовлетворительным здоровьем:"+persentOfTotal(normHealth)+" ");
+                    System.out.println("  Процент людей с не удовлетворительным здоровьем:"+persentOfTotal(notOkHealth)+"}");
             }
-
         }
+    }
+    public static int[] arrOFHealthCondition (int[] arrOfEachPersonTypes ,int healthPoint,int okHealth, int normHealth,
+                                              int notOkHealth){
+
+        if(healthPoint==8){
+            System.out.println(Arrays.toString(arrOfEachPersonTypes)+"healthpont="+healthPoint+" -удовлетворительный");
+            okHealth++;
+        }
+        else if((healthPoint==7)){
+            System.out.println(Arrays.toString(arrOfEachPersonTypes)+"healthpont="+healthPoint+" -условно удовлетворительный");
+            normHealth++;
+        }
+        else {
+            System.out.println(Arrays.toString(arrOfEachPersonTypes)+"healthpont="+healthPoint+" -не удовлетворительный");
+            notOkHealth++;
+        }
+        int [] arr=new int[]{okHealth,normHealth,notOkHealth};
+        return arr;
     }
 
     private static void printingOfGroupOfDifferentTypes(double[] arr1, double[] arr2, double[] arr3, double[] arr4) {
@@ -104,7 +161,7 @@ public class schitaka {
                 break;
             }
         }
-        return new int[]{persentOfType(type1),persentOfType(type2),persentOfType(type3),persentOfType(type4),persentOfType(type5)};
+        return new int[]{persentOfTotal(type1), persentOfTotal(type2), persentOfTotal(type3), persentOfTotal(type4), persentOfTotal(type5)};
     }
 
     static int assigmentGroupForPerson (double [] arr,int index1, int index2,int index3){
@@ -233,7 +290,7 @@ public class schitaka {
         }
     }
 
-    static int persentOfType (int typeSum){
+    static int persentOfTotal(int typeSum){
         int total = 128;
         return typeSum * 100 / total;
     }
