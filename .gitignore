@@ -1,0 +1,4 @@
+# Project exclude paths
+/out/
+/.idea/
+/RGR_Gonchar.iml
