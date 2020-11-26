@@ -75,9 +75,9 @@ public class schitaka {
                 }
 
                 if(bigArrIndex==39){
-                    System.out.println("{ Процент людей с удовлетворительным состоянием здоровья:"+persentOfTotal(okHealth)+" ");
-                    System.out.println("  Процент людей с условно удовлетворительным здоровьем:"+persentOfTotal(normHealth)+" ");
-                    System.out.println("  Процент людей с не удовлетворительным здоровьем:"+persentOfTotal(notOkHealth)+"}");
+                    System.out.println("количество людей с удовлетворительным здоровьем:"+okHealth+" Процент людей с удовлетворительным состоянием здоровья:"+persentOfTotal(okHealth)+" ");
+                    System.out.println("количество людей с условно удовлетворительным зздоровьем:"+normHealth+"  Процент людей с условно удовлетворительным здоровьем:"+persentOfTotal(normHealth)+" ");
+                    System.out.println("количество людей с не удовлетворительным здоровьем:"+notOkHealth+"  Процент людей с не удовлетворительным здоровьем:"+persentOfTotal(notOkHealth)+" ");
             }
         }
     }
@@ -198,7 +198,6 @@ public class schitaka {
         } catch (IOException e) {
             System.out.println(e);
         }
-       // System.out.println(Arrays.toString(arr));
         return arr;
     }
 
