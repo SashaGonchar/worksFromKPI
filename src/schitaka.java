@@ -20,8 +20,7 @@ public class schitaka {
         int okHealth=0;
         int normHealth=0;
         int notOkHealth=0;
-        for (int bigArrIndex=0,index1=0,index2=1,index3=2;bigArrIndex<128;bigArrIndex++){
-
+        for (int bigArrIndex=0,index1=0,index2=1,index3=2;bigArrIndex<40;bigArrIndex++){
             for (int index = 0; index < 8; index++,index1+=3,index2+=3,index3+=3) {
 
                 int[] arrOfEachPersonTypes = new int[8];
@@ -75,7 +74,7 @@ public class schitaka {
 
                 }
 
-                if(bigArrIndex==127){
+                if(bigArrIndex==39){
                     System.out.println("{ Процент людей с удовлетворительным состоянием здоровья:"+persentOfTotal(okHealth)+" ");
                     System.out.println("  Процент людей с условно удовлетворительным здоровьем:"+persentOfTotal(normHealth)+" ");
                     System.out.println("  Процент людей с не удовлетворительным здоровьем:"+persentOfTotal(notOkHealth)+"}");
@@ -128,8 +127,8 @@ public class schitaka {
         int type4 = 0;
         int type5 = 0;
 
-        for (int index = 0; index <= 384; index++) {
-            if (index1 < 384 && index2 < 384 && index3 < 384) {
+        for (int index = 0; index <= 120; index++) {
+            if (index1 < 120 && index2 < 120 && index3 < 120) {
                 double t0 = assigmentOft0(arr, index1);//сюда передаем значения поочередно для каждого параметра с файла
                 double t1 = assigmentOft1(arr, index2);
                 double t3 = assigmentOft3(arr, index3);
@@ -191,7 +190,7 @@ public class schitaka {
 
     public static double[] loadFromFile(File file) {
         StringBuilder sb = new StringBuilder();
-        double [] arr= new double[384];
+        double [] arr= new double[120];
         try (Scanner sc = new Scanner(file)) {
             for (int index=0; sc.hasNextLine();index++) {
                arr [index]= Double.parseDouble((String.valueOf(sc.nextLine())));
@@ -291,7 +290,7 @@ public class schitaka {
     }
 
     static int persentOfTotal(int typeSum){
-        int total = 128;
+        int total = 40;
         return typeSum * 100 / total;
     }
 }
