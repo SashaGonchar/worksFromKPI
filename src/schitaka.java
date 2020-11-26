@@ -18,7 +18,30 @@ public class schitaka {
         printingOfGroupOfDifferentTypes(arr1, arr2, arr3, arr4);
         printingOfGroupOfDifferentTypes(arr5, arr6, arr7, arr8);
 
+        for (int bigArrIndex=0,index1=0,index2=1,index3=2;bigArrIndex<128;bigArrIndex++){
+            for (int index = 0; index < 8; index++,index1+=3,index2+=3,index3+=3) {
 
+                int[] arrOfEachPersonTypes = new int[8];
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr1, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr2, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr3, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr4, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr5, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr6, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr7, index1, index2, index3);
+                index++;
+                arrOfEachPersonTypes[index] = assigmentGroupForPerson(arr8, index1, index2, index3);
+                System.out.println(Arrays.toString(arrOfEachPersonTypes));
+
+            }
+
+        }
     }
 
     private static void printingOfGroupOfDifferentTypes(double[] arr1, double[] arr2, double[] arr3, double[] arr4) {
@@ -37,7 +60,6 @@ public class schitaka {
         return a[a.length-1];
     }
 
-
     static int[] calculatingOFGroupPersent (double [] arr){
         int index1 = 0;
         int index2 = 1;
@@ -54,7 +76,7 @@ public class schitaka {
                 double t0 = assigmentOft0(arr, index1);//сюда передаем значения поочередно для каждого параметра с файла
                 double t1 = assigmentOft1(arr, index2);
                 double t3 = assigmentOft3(arr, index3);
-                double h0 = calculating_h0(t0);//посчитали h0
+                double h0 = calculating_h0(t1);//посчитали h0
 
                 index1 += 3;
                 index2 += 3;
@@ -85,11 +107,15 @@ public class schitaka {
         return new int[]{persentOfType(type1),persentOfType(type2),persentOfType(type3),persentOfType(type4),persentOfType(type5)};
     }
 
+    static int assigmentGroupForPerson (double [] arr,int index1, int index2,int index3){
 
+        double t0 = assigmentOft0(arr, index1);//сюда передаем значения поочередно для каждого параметра с файла
+        double t1 = assigmentOft1(arr, index2);
+        double t3 = assigmentOft3(arr, index3);
+        double h0 = calculating_h0(t1);
 
-
-
-
+        return (typeDefenition(t0, t1, t3, h0));
+    }
 
     public static double assigmentOft0 (double arr[],int index){
         double t0 = arr[index];
@@ -107,7 +133,7 @@ public class schitaka {
     }
 
     public static double[] loadFromFile(File file) {
-        StringBuilder sb = new StringBuilder();
+        new StringBuilder();
         double [] arr= new double[384];
         try (Scanner sc = new Scanner(file)) {
             for (int index=0; sc.hasNextLine();index++) {
@@ -120,8 +146,8 @@ public class schitaka {
         return arr;
     }
 
-    static double calculating_h0(double t0){
-        double ho = (t0 / 100) * 10;
+    static double calculating_h0(double t1){
+        double ho = (t1 / 100) * 10;
         return ho;
     }
 
